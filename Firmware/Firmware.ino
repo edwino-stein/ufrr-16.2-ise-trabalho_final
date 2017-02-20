@@ -1,5 +1,7 @@
+#include "config.h"
+
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(SERIAL_SPEED);
 }
 
 void loop() {
