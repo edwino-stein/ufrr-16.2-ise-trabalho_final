@@ -1,9 +1,10 @@
+#include "config.h"
 #include "foodMeasurer.h"
 #include <Ultrasonic.h>
 
 Ultrasonic *ultrasonic;
 
-void initFoodSensor(int trigger, int echo){
+void initFoodSensor(int triggerPin, int echoPin){
     ultrasonic = new Ultrasonic(trigger, echo);
 }
 
