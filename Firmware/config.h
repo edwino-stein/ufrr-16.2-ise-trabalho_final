@@ -2,6 +2,7 @@
     #define _CONFIG
 
     #define SERIAL_SPEED 9600
+    #define INTERRUP_TIME 500
 
     //Food Measurer
     #define FM_ECHO 5

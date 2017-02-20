@@ -9,6 +9,9 @@
 ## Bibliotecas necessárias:
 - Servo (Micro servo 9g):
     - Compatível com a biblioteca **Servo.h** padrão do Arduino
+- MsTimer2:
+    - Disponível para download pelo gerenciador de bibliotecas da IDE do Arduino
+    - Também Disponível na [Página da PJRC](https://www.pjrc.com/teensy/td_libs_MsTimer2.html)
 - HC-SR04 Ultrasonic sensor:
-    - Disponivel no [Repositório Felipeflop](https://github.com/filipeflop/Ultrasonic)
+    - Disponível no [Repositório Felipeflop](https://github.com/filipeflop/Ultrasonic)
     - Também no arquivo **Libs/HC-SR04 Ultrasonic sensor.zip**
