@@ -19,4 +19,12 @@
     #define FOOD_HATCH_MIN_POS 10
     #define FOOD_HATCH_MAX_POS 39
 
+    //RFID Sensor
+    #define RFID_SDA 10
+    #define RFID_SCK 13
+    #define RFID_MOSI 11
+    #define RFID_MISO 12
+    #define RFID_NC -1      //Not used
+    #define RFID_RST 9
+
 #endif

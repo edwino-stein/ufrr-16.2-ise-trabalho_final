@@ -15,6 +15,9 @@
 - HC-SR04 Ultrasonic sensor:
     - Disponível no [Repositório Felipeflop](https://github.com/filipeflop/Ultrasonic)
     - Também no arquivo **Libs/HC-SR04 Ultrasonic sensor.zip**
+- MFRC522 RFID sensor:
+    -  Disponível no [Repositório de miguelbalboa](https://github.com/miguelbalboa/rfid)
+    -  Também no arquivo **Libs/MFRC522 RFID sensor.zip**
 
 ## Utilizando comunicação serial com programa externo
 Para a comunição serial **funcionar sem a IDE do Arduino**, é necessário realizar um workaround no Arduino para desabilitar o **autoreset**, como é ilustrado neste [artigo do Arduino playground](http://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection).
