@@ -5,7 +5,7 @@
 Ultrasonic *ultrasonic;
 
 void initFoodSensor(int triggerPin, int echoPin){
-    ultrasonic = new Ultrasonic(trigger, echo);
+    ultrasonic = new Ultrasonic(triggerPin, echoPin);
 }
 
 float getFoodPercentage(int checkTimes){
