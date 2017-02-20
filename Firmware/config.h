@@ -2,6 +2,7 @@
     #define _CONFIG
 
     #define SERIAL_SPEED 9600
+    #define SERIAL_READ_BUFFER 64
     #define INTERRUP_TIME 500
 
     //Food Measurer

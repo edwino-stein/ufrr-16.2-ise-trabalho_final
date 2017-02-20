@@ -15,3 +15,7 @@
 - HC-SR04 Ultrasonic sensor:
     - Disponível no [Repositório Felipeflop](https://github.com/filipeflop/Ultrasonic)
     - Também no arquivo **Libs/HC-SR04 Ultrasonic sensor.zip**
+
+## Utilizando comunicação serial com programa externo
+Para a comunição serial **funcionar sem a IDE do Arduino**, é necessário realizar um workaround no Arduino para desabilitar o **autoreset**, como é ilustrado neste [artigo do Arduino playground](http://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection).
+Para o Arduino Uno, basta conectar um capacitor de **10µF** nos pinos GND (polo negativo) e RESET (polo positivo).
