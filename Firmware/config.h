@@ -13,6 +13,7 @@
 
     //Food Hatch
     #define FH_SERVO 6
+    #define FH_SWITCH 7
     #define FH_OPEN_TIME 1000
     #define FH_OPENING_SPEED 1
     #define FH_CLOSING_SPEED 3
