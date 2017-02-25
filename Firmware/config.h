@@ -5,6 +5,11 @@
     #define SERIAL_READ_BUFFER 64
     #define INTERRUP_TIME 500
 
+    #define DO_NOTHING 0
+    #define RFID_REG 2
+
+    #define RFID_REG_TIME 100
+
     //Food Measurer
     #define FM_ECHO 5
     #define FM_TRIG 4
