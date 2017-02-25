@@ -14,5 +14,6 @@
     void initLedBehavior(int pin);
     void ledListener();
     void setLedBehavior(int mode);
+    void blinkTimes(int times, int d);
 
 #endif

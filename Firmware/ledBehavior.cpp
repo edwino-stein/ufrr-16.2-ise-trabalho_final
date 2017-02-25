@@ -50,3 +50,14 @@ void setLedBehavior(int mode){
     ledMode = mode;
     ledUpdateMode = true;
 }
+
+void blinkTimes(int times, int d){
+    int s = digitalRead(ledPin);
+    
+    for(int i = 0; i < times*2; i++){
+        digitalWrite(ledPin, !digitalRead(ledPin));
+        delay(d);
+    }
+
+    digitalWrite(ledPin, s);
+}

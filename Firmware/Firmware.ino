@@ -55,10 +55,9 @@ void onRFIDReceive(String uid){
 
     if(PROG_FUNC == RFID_REG){
         currentUID = uid;
-
+        blinkTimes(10, 50);
         rfidRestClock = RFID_COOLDOWN*2;
         disableRfidReader(true);
-
         Serial.print("UID registrada: ");
         Serial.println(uid);
         enableRFIDRecordMode(false);
