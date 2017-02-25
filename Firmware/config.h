@@ -27,4 +27,8 @@
     #define RFID_NC -1      //Not used
     #define RFID_RST 9
 
+    //Push Button
+    #define BTN_PIN 2
+    #define BTN_DELAY_ON_FALL 10
+
 #endif
