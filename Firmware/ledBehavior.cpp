@@ -17,7 +17,7 @@ void ledListener(){
 
     switch (ledMode) {
         case LED_ALIGHT:
-            if(ledUpdateMode) digitalWrite(ledPin, HIGH);
+            digitalWrite(ledPin, HIGH);
         break;
 
         case LED_BLINKING:
@@ -40,7 +40,7 @@ void ledListener(){
 
         case LED_OFF:
         default:
-            if(ledUpdateMode) digitalWrite(ledPin, LOW);
+            digitalWrite(ledPin, LOW);
     }
 
     ledUpdateMode = false;

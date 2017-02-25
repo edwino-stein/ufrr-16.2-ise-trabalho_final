@@ -7,7 +7,8 @@
 
     #define DO_NOTHING 0
     #define READY_TO_SERVE 1
-    #define RFID_REG 2
+    #define SERVING_FOOD 2
+    #define RFID_REG 3
 
     #define RFID_REG_TIME 100
     #define RFID_COOLDOWN 1000

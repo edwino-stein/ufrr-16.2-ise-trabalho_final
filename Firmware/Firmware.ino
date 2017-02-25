@@ -5,6 +5,7 @@
 #include "rfidController.h"
 #include "pushButton.h"
 #include "ledBehavior.h"
+#include "foodHatch.h"
 
 /* **************** FUNCTION DECLARATIONS **************** */
 
@@ -13,6 +14,7 @@
  */
 void enableRFIDRecordMode(bool enable);
 void enableServerFoodMode(bool enable);
+void serve();
 
 /* **************** GLOABAL VARS **************** */
 
@@ -67,7 +69,7 @@ void onRFIDReceive(String uid){
     if(PROG_FUNC == READY_TO_SERVE){
         if(currentUID == uid){
             Serial.println("Servir racao");
-            enableServerFoodMode(false);
+            serve();
         }
         else{
             Serial.println("UDI invalido");
@@ -105,6 +107,7 @@ void setup() {
 
     initRfidSensor(RFID_SDA, RFID_RST, onRFIDReceive);
     initPushButton(BTN_PIN, onInterrupBtn, onPressingBtn);
+    initFoodHatch(FH_SERVO, FH_SWITCH);
     initLedBehavior(LED);
     setLedBehavior(LED_ALIGHT);
 }
@@ -141,4 +144,13 @@ void enableServerFoodMode(bool enable){
         setLedBehavior(LED_OFF);
         serveFoodClock = 0;
     }
+}
+
+void serve(){
+    if(PROG_FUNC != READY_TO_SERVE) return;
+    PROG_FUNC = SERVING_FOOD;
+    serveFood(FH_OPEN_TIME, FH_OPENING_SPEED, FH_CLOSING_SPEED);
+    Serial.println("Terminou de servir");
+    PROG_FUNC = READY_TO_SERVE;
+    enableServerFoodMode(false);
 }
