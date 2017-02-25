@@ -31,4 +31,12 @@
     #define BTN_PIN 2
     #define BTN_DELAY_ON_FALL 10
 
+    // LED
+    #define LED 3
+    #define LED_ALIGHT 0
+    #define LED_OFF 1
+    #define LED_BLINKING 2
+    #define LED_BLINKING_TIMER 100
+    #define LED_BLINK_DELAY 10
+
 #endif
