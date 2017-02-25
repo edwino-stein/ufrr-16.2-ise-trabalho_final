@@ -6,9 +6,12 @@
     #define INTERRUP_TIME 500
 
     #define DO_NOTHING 0
+    #define READY_TO_SERVE 1
     #define RFID_REG 2
 
     #define RFID_REG_TIME 100
+    #define RFID_COOLDOWN 1000
+    #define DEFAULT_SERVE_FOOD_TIME 10000
 
     //Food Measurer
     #define FM_ECHO 5
