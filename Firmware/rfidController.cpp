@@ -9,6 +9,7 @@ void initRfidSensor(int sdaPin, int rstPin, void (*cb)(String)){
     rfidSensor = new MFRC522(sdaPin, rstPin);
     rfidCallback = cb;
     rfidReadEnabled = true;
+    rfidSensor->PCD_Init();
 }
 
 void rfidListener(){
