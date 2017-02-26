@@ -9,8 +9,11 @@
     #define READY_TO_SERVE 1
     #define SERVING_FOOD 2
     #define RFID_REG 3
+    #define RFID_CANCEL 4
+    #define SERVE_FOOD_OVERRIDE 5
+    #define SERVE_FOOD_FORCE 6
 
-    #define RFID_REG_TIME 100
+    #define RFID_REG_TIME 200
     #define RFID_COOLDOWN 1000
     #define DEFAULT_SERVE_FOOD_TIME 10000
 
@@ -40,6 +43,7 @@
     //Push Button
     #define BTN_PIN 2
     #define BTN_DELAY_ON_FALL 10
+    #define BTN_PRESS_MARGIN 50
 
     // LED
     #define LED 3
