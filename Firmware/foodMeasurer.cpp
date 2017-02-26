@@ -10,6 +10,8 @@ void initFoodSensor(int triggerPin, int echoPin){
 
 float getFoodPercentage(int checkTimes){
 
+    if(ultrasonic == NULL) return 0;
+
     long microsec;
     float distCm, amount = 0;
     int counter = checkTimes;

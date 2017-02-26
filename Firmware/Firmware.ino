@@ -6,6 +6,7 @@
 #include "pushButton.h"
 #include "ledBehavior.h"
 #include "foodHatch.h"
+#include "foodMeasurer.h"
 
 /* **************** FUNCTION DECLARATIONS **************** */
 
@@ -24,6 +25,10 @@ unsigned long int serveFoodTime = DEFAULT_SERVE_FOOD_TIME;
 unsigned long int serveFoodClock = 0;
 int rfidRestClock = 0;
 bool btnPresseted = false;
+
+float foodPercent = 0;
+bool updateFootPercet = true;
+
 /* **************** CALLBACKS **************** */
 
 // Time
@@ -50,6 +55,8 @@ void onInterrupTime(){
         disableRfidReader(true);
         rfidRestClock -= INTERRUP_TIME;
     }
+
+    updateFootPercet = true;
 
     if(!btnPresseted){
 
@@ -135,6 +142,8 @@ void setup() {
     initRfidSensor(RFID_SDA, RFID_RST, onRFIDReceive);
     initPushButton(BTN_PIN, onInterrupBtn, onPressingBtn);
     initFoodHatch(FH_SERVO, FH_SWITCH);
+    // Descomentar esta linha quando o equipamento estiver montado
+    // initFoodSensor(FM_TRIG, FM_ECHO);
     initLedBehavior(LED);
     setLedBehavior(LED_ALIGHT);
 }
@@ -148,6 +157,11 @@ void loop() {
     if(PROG_FUNC == SERVE_FOOD_FORCE){
         PROG_FUNC = READY_TO_SERVE;
         serve();
+    }
+
+    if(updateFootPercet){
+        foodPercent = getFoodPercentage(5);
+        updateFootPercet = false;
     }
 }
 
