@@ -22,3 +22,9 @@
 ## Utilizando comunicação serial com programa externo
 Para a comunição serial **funcionar sem a IDE do Arduino**, é necessário realizar um workaround no Arduino para desabilitar o **autoreset**, como é ilustrado neste [artigo do Arduino playground](http://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection).
 Para o Arduino Uno, basta conectar um capacitor de **10µF** nos pinos GND (polo negativo) e RESET (polo positivo).
+
+## WebManager
+É necessário realizar o workaround citado anteriormente para poder executar o script **startSerialServer.sh** passando como parâmetro o caminho para o dispositivo serial, então basta configuar o documentRoot do servidor HTTP para o diretório **WebManager/**.
+OBS.: É necessário ter instalado o PHP 5.5+.
+OBS.: A aplicação só foi testada no Ubuntu 16.04.
+OBS.: O usuário do servidor HTTP deve ter permissão de escrita no dispositivo serial.
