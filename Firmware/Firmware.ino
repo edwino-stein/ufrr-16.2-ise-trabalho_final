@@ -43,7 +43,7 @@ void onInterrupTime(){
         if(serveFoodClock >= serveFoodTime){
             if(PROG_FUNC == DO_NOTHING){
                 enableServerFoodMode(true);
-                Serial.println("pronto para servir");
+                Serial.println("LOG: READY_TO_SERVE");
                 return;
             }
         }
@@ -72,7 +72,7 @@ void onInterrupTime(){
         }
 
         else if(PROG_FUNC == SERVE_FOOD_OVERRIDE){
-            Serial.println("Servir (Botao)");
+            Serial.println("LOG: SERVE_FOOD_OVERRIDE");
             PROG_FUNC = SERVE_FOOD_FORCE;
         }
     }
@@ -86,7 +86,7 @@ void onRFIDReceive(String uid){
         blinkTimes(10, 50);
         rfidRestClock = RFID_COOLDOWN*2;
         disableRfidReader(true);
-        Serial.print("UID registrada: ");
+        Serial.print("LOG: UID registrada ");
         Serial.println(uid);
         enableRFIDRecordMode(false);
         return;
@@ -94,11 +94,11 @@ void onRFIDReceive(String uid){
 
     if(PROG_FUNC == READY_TO_SERVE){
         if(currentUID == uid){
-            Serial.println("Servir racao");
+            Serial.println("LOG: READY_TO_SERVE");
             serve();
         }
         else{
-            Serial.println("UDI invalido");
+            Serial.println("LOG: UDI invalido");
         }
     }
 }
@@ -267,12 +267,12 @@ void enableRFIDRecordMode(bool enable){
     if(enable){
         PROG_FUNC = RFID_REG;
         setLedBehavior(LED_BLINKING);
-        Serial.println("Modo de Registro de RFID");
+        Serial.println("LOG: RFID_REG");
     }
     else if(PROG_FUNC == RFID_REG || PROG_FUNC == RFID_CANCEL){
         PROG_FUNC = DO_NOTHING;
         setLedBehavior(LED_OFF);
-        Serial.println("Sair do modo de Registro de RFID");
+        Serial.println("LOG: RFID_CANCEL");
     }
 }
 
@@ -286,13 +286,13 @@ void enableServerFoodMode(bool enable){
         PROG_FUNC = DO_NOTHING;
         setLedBehavior(LED_OFF);
         serveFoodClock = 0;
+        Serial.println("LOG: DO_NOTHING");
     }
 }
 
 void serve(){
     PROG_FUNC = SERVING_FOOD;
     serveFood(FH_OPEN_TIME, FH_OPENING_SPEED, FH_CLOSING_SPEED);
-    Serial.println("Terminou de servir");
     PROG_FUNC = READY_TO_SERVE;
     enableServerFoodMode(false);
 }
