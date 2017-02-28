@@ -12,5 +12,6 @@ void serialListener(){
 
     byte buffer[SERIAL_READ_BUFFER];
     short int lenght = Serial.readBytes(buffer, SERIAL_READ_BUFFER);
+    delay(50);
     serialCallback(buffer, lenght);
 }

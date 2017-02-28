@@ -17,6 +17,14 @@
     #define RFID_COOLDOWN 1000
     #define DEFAULT_SERVE_FOOD_TIME 10000
 
+
+    //Serial commands
+    #define SERIAL_STATUS   's'
+    #define SERIAL_OVERRIDE 'o'
+    #define SERIAL_SET_TIME 't'
+    #define SERIAL_REG_RFID 'r'
+    #define SERIAL_SET_RFID 'u'
+
     //Food Measurer
     #define FM_ECHO 5
     #define FM_TRIG 4
