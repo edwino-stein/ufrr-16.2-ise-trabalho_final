@@ -1,7 +1,8 @@
-#include "config.h"
 #include <SPI.h>
 #include <MsTimer2.h>
 
+#include "Firmware.h"
+#include "config.h"
 #include "rfidController.h"
 #include "pushButton.h"
 #include "ledBehavior.h"
@@ -9,24 +10,17 @@
 #include "foodMeasurer.h"
 #include "serialListener.h"
 
-/* **************** FUNCTION DECLARATIONS **************** */
-
-/**
- * TODO: Passar para um arquivo .h
- */
-void enableRFIDRecordMode(bool enable);
-void enableServerFoodMode(bool enable);
-void serve();
-char * floatToString(float value);
-unsigned long parseServeFoodTime (byte data);
-
-/* **************** GLOABAL VARS **************** */
+/* ****************************** GLOABAL VARS ******************************** */
 
 int PROG_FUNC = READY_TO_SERVE;
+
 String currentUID;
+
 unsigned long serveFoodTime = DEFAULT_SERVE_FOOD_TIME;
 unsigned long serveFoodClock = 0;
+
 int rfidRestClock = 0;
+
 bool btnPresseted = false;
 
 float foodPercent = 0;
@@ -34,10 +28,48 @@ bool updateFootPercet = true;
 
 unsigned long serialCount = 0;
 
-/* **************** CALLBACKS **************** */
+
+/* ****************************** ARDUINO CORE ******************************** */
+
+void setup() {
+    SPI.begin();
+    Serial.begin(SERIAL_SPEED);
+
+    MsTimer2::set(INTERRUP_TIME, onInterruptTime);
+    MsTimer2::start();
+
+    initSerialListener(onSerialReceive);
+    initRfidSensor(RFID_SDA, RFID_RST, onRFIDReceive);
+    initPushButton(BTN_PIN, onInterruptBtn, onPressingBtn);
+    initFoodHatch(FH_SERVO, FH_SWITCH);
+    // Descomentar esta linha quando o equipamento estiver montado
+    // initFoodSensor(FM_TRIG, FM_ECHO);
+    initLedBehavior(LED);
+    setLedBehavior(LED_ALIGHT);
+}
+
+void loop() {
+
+    serialListener();
+    rfidListener();
+    pushButtonListener();
+    ledListener();
+
+    if(PROG_FUNC == SERVE_FOOD_FORCE){
+        PROG_FUNC = READY_TO_SERVE;
+        serve();
+    }
+
+    if(updateFootPercet){
+        foodPercent = getFoodPercentage(5);
+        updateFootPercet = false;
+    }
+}
+
+/* ******************************** CALLBACKS ********************************* */
 
 // Time
-void onInterrupTime(){
+void onInterruptTime(){
 
     if(PROG_FUNC != READY_TO_SERVE){
         if(serveFoodClock >= serveFoodTime){
@@ -104,7 +136,7 @@ void onRFIDReceive(String uid){
 }
 
 // Button
-void onInterrupBtn(){
+void onInterruptBtn(){
     btnPresseted = false;
 }
 
@@ -224,44 +256,7 @@ void onSerialReceive(byte* data, short int length){
     }
 }
 
-/* **************** ARDUINO CORE **************** */
-
-void setup() {
-    SPI.begin();
-    Serial.begin(SERIAL_SPEED);
-
-    MsTimer2::set(INTERRUP_TIME, onInterrupTime);
-    MsTimer2::start();
-
-    initSerialListener(onSerialReceive);
-    initRfidSensor(RFID_SDA, RFID_RST, onRFIDReceive);
-    initPushButton(BTN_PIN, onInterrupBtn, onPressingBtn);
-    initFoodHatch(FH_SERVO, FH_SWITCH);
-    // Descomentar esta linha quando o equipamento estiver montado
-    // initFoodSensor(FM_TRIG, FM_ECHO);
-    initLedBehavior(LED);
-    setLedBehavior(LED_ALIGHT);
-}
-
-void loop() {
-
-    serialListener();
-    rfidListener();
-    pushButtonListener();
-    ledListener();
-
-    if(PROG_FUNC == SERVE_FOOD_FORCE){
-        PROG_FUNC = READY_TO_SERVE;
-        serve();
-    }
-
-    if(updateFootPercet){
-        foodPercent = getFoodPercentage(5);
-        updateFootPercet = false;
-    }
-}
-
-/* **************** UTIL **************** */
+/* ********************************** UTIL *********************************** */
 
 void enableRFIDRecordMode(bool enable){
     if(enable){
