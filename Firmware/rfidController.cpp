@@ -22,7 +22,7 @@ void rfidListener(){
     byte data;
 
     for (byte i = 0; i < rfidSensor->uid.size; i++) {
-        uid.concat(String(rfidSensor->uid.uidByte[i] < 0x10 ? " 0" : " "));
+        if(rfidSensor->uid.uidByte[i] < 0x10) uid.concat("0");
         uid.concat(String(rfidSensor->uid.uidByte[i], HEX));
     }
 
