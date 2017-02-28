@@ -173,6 +173,7 @@ void onSerialReceive(byte* data, short int length){
                 if(length > 2){
                     if(PROG_FUNC == DO_NOTHING || PROG_FUNC == READY_TO_SERVE)
                         enableServerFoodMode(false);
+                        serveFoodClock = 0;
                 }
                 else if(PROG_FUNC == READY_TO_SERVE){
                     serveFoodClock = serveFoodTime;
@@ -281,7 +282,7 @@ void enableServerFoodMode(bool enable){
         serveFoodClock = 0;
         setLedBehavior(LED_ALIGHT);
     }
-    else if(PROG_FUNC == READY_TO_SERVE){
+    else if(PROG_FUNC == READY_TO_SERVE || PROG_FUNC == DO_NOTHING){
         PROG_FUNC = DO_NOTHING;
         setLedBehavior(LED_OFF);
         serveFoodClock = 0;
