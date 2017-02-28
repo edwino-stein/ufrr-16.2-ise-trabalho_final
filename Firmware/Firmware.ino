@@ -168,21 +168,19 @@ void onSerialReceive(byte* data, short int length){
 
             case SERIAL_SET_TIME:
 
-                if(data[1] > 0){
-                    serveFoodTime = parseServeFoodTime(data[1]);
-                }
-                else{
-                    serveFoodTime = 0;
-                }
+                serveFoodTime = parseServeFoodTime(data[1]);
 
-                if(length >= 2){
-                    if(data[2] != 0 && (PROG_FUNC == DO_NOTHING || PROG_FUNC == READY_TO_SERVE)){
+                if(length > 2){
+                    if(PROG_FUNC == DO_NOTHING || PROG_FUNC == READY_TO_SERVE)
                         enableServerFoodMode(false);
-                    }
+                }
+                else if(PROG_FUNC == READY_TO_SERVE){
+                    serveFoodClock = serveFoodTime;
                 }
 
-                if(serveFoodTime <= serveFoodClock){
+                if(serveFoodTime < serveFoodClock){
                     serveFoodClock = serveFoodTime;
+                    PROG_FUNC == READY_TO_SERVE;
                 }
 
                 result = "";
