@@ -1,0 +1,22 @@
+{
+    "success": true,
+    "data": {
+        "currentUid": "",
+        "timer": {
+            "time": 0,
+            "unit": "minute"
+        },
+        "pets": [
+            {
+                "name": "Adjnabs",
+                "uid": "566C96A5",
+                "avatar": "img/pet1.jpg"
+            },
+            {
+                "name": "Sr. Manchinha",
+                "uid": "155B0E88",
+                "avatar": "img/pet2.jpg"
+            }
+        ]
+    }
+}

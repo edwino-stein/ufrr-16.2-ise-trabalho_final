@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>WebManager</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Scripts -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/Application.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/app/app.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>WebManager</h1>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+
+                <!-- petinfo-panel -->
+                <div id="petinfo-panel" class="panel panel-default">
+                    <div class="panel-heading">Informações</div>
+                    <div class="panel-body">
+                        <div class="col-xs-4 col-sm-4 col-md-2 avatar-container">
+                            <div id="pet-avatar" class="thumbnail">
+                                <img src="img/default-avatar.png">
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-10">
+                            <h3 id="pet-name">Pet Nome</h3>
+                            <div class="rfid">
+                                <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                <span id="pet-uid">UID</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div id="state">
+                                <h4>
+                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                    <span class="text">Tempo restante</span>
+                                </h4>
+                                <div id="clock">
+                                    <span class="hour">0</span> :
+                                    <span class="minute">0</span> :
+                                    <span class="second">0</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- FIM petinfo-panel -->
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Ações
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <button id="override" type="button" class="btn btn-primary btn-block btn-lg">Servir agora!</button>
+                        </li>
+                        <li class="list-group-item">
+                            <button id="rfid-change" type="button" class="btn btn-default btn-block btn-lg">Alterar UID</button>
+                        </li>
+
+                        <!-- set-timer-form -->
+                        <li class="list-group-item">
+                            <form id="set-timer-form" >
+
+                                <h4>Alterar tempo</h4>
+                                <div class="input-group">
+
+                                    <input type="number" min="0" max="127" class="form-control" name="t" placeholder="Tempo" value="1">
+
+                                    <div class="input-group-btn">
+                                        <select class="form-control" name="u">
+                                            <option value="minute" >Minutos</option>
+                                            <option value="hour" >Horas</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default">Alterar</button>
+                                    </div>
+
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="r"> Reinicar contagem
+                                    </label>
+                                </div>
+                            </form>
+                        </li>
+
+                        <!-- FIM set-timer-form -->
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- food-measurer-panel -->
+            <div class="col-xs-12 col-sm-6">
+                <div id="food-measurer-panel" class="panel panel-default">
+                    <div class="panel-heading">
+                        Nível de comida
+                    </div>
+                    <div class="panel-body">
+                        <div id="food-measurer">
+                            <div class="bar"></div>
+                            <div class="icon"></div>
+                        </div>
+                        <h2>
+                            <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+                            <span id="food-measurer-label">100</span> %
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM food-measurer-panel -->
+
+        </div>
+    </body>
+</html>
