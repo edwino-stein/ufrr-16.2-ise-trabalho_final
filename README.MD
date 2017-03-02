@@ -1,10 +1,10 @@
-﻿# Trabalho final de Sistemas Embarcados 2016.2
+# Trabalho Final de Sistemas Embarcados 2016.2
 
-- Componenetes:
+ - Instituição: Universidade Federal de Roraima
+ - Professor: Herbet Oliveira Rocha
+ - Componenetes:
     - Edwino Alberto Lopes Stein
     - Pedro Daniel da Silva Gohl
- - Professor: Herbet Oliveira Rocha
- - Instituição: Universidade Federal de Roraima
 
 ## Bibliotecas necessárias:
 - Servo (Micro servo 9g):
@@ -25,8 +25,9 @@ Para o Arduino Uno, basta conectar um capacitor de **10µF** nos pinos GND (polo
 
 ## WebManager
 É necessário realizar o workaround citado anteriormente para poder executar o script **startSerialServer.sh** passando como parâmetro o caminho para o dispositivo serial, então basta configuar o documentRoot do servidor HTTP para o diretório **WebManager/**.
+
 OBS.: É necessário ter instalado o PHP 5.5+.
 OBS.: A aplicação só foi testada no Ubuntu 16.04.
 OBS.: O usuário do servidor HTTP deve ter permissão de escrita no dispositivo serial.
 
-###### OBS.:As imagens dos componentes do relatório foram baseadas nas imagens disponíveis em [circuits.io](https://circuits.io/).
+###### OBS.: As imagens dos componentes do relatório foram baseadas nas imagens dos componentes de [circuits.io](https://circuits.io/).
