@@ -6,6 +6,7 @@
 Servo *servo;
 bool isOpen;
 int switchP;
+int lastPos = 0;
 
 void initFoodHatch(int servoPin, int switchPin){
     pinMode(switchPin, OUTPUT);
@@ -16,7 +17,7 @@ void initFoodHatch(int servoPin, int switchPin){
     servo->attach(servoPin);
     isOpen = false;
     servo->write(FOOD_HATCH_MIN_POS);
-    delay(15);
+    delay(30);
     setEnabledFoodHatch(false);
 }
 
@@ -64,10 +65,10 @@ void closeFoodHatch(int speed){
 
 void serveFood(int timer, int openSpeed, int closeSpeed){
     setEnabledFoodHatch(true);
-    if(!isOpen) openFoodHatch(openSpeed);
+    delay(20);
+    openFoodHatch(openSpeed);
     delay(timer);
     closeFoodHatch(closeSpeed);
-    delay(60);
     setEnabledFoodHatch(false);
 }
 
@@ -76,5 +77,13 @@ bool isOpenFoodHatch(){
 }
 
 void setEnabledFoodHatch(bool enable){
+  
+    if(enable){
+      servo->write(enable);
+    }
+    else{
+      lastPos = servo->read();
+    }
+
     digitalWrite(switchP, enable ? HIGH : LOW);
 }

@@ -24,7 +24,7 @@ int rfidRestClock = 0;
 bool btnPresseted = false;
 
 float foodPercent = 0;
-bool updateFootPercet = true;
+bool updateFootPercet = false;
 
 unsigned long serialCount = 0;
 
@@ -42,14 +42,17 @@ void setup() {
     initRfidSensor(RFID_SDA, RFID_RST, onRFIDReceive);
     initPushButton(BTN_PIN, onInterruptBtn, onPressingBtn);
     initFoodHatch(FH_SERVO, FH_SWITCH);
-    // Descomentar esta linha quando o equipamento estiver montado
-    // initFoodSensor(FM_TRIG, FM_ECHO);
+    initFoodSensor(FM_TRIG, FM_ECHO);
     initLedBehavior(LED);
     setLedBehavior(LED_ALIGHT);
+
+    foodPercent = getFoodPercentage(1);
 }
 
 void loop() {
 
+    if(PROG_FUNC == SERVING_FOOD) return;
+  
     serialListener();
     rfidListener();
     pushButtonListener();
@@ -61,7 +64,7 @@ void loop() {
     }
 
     if(updateFootPercet){
-        foodPercent = getFoodPercentage(5);
+        foodPercent = getFoodPercentage(1);
         updateFootPercet = false;
     }
 }
@@ -94,7 +97,7 @@ void onInterruptTime(){
     }
 
     updateFootPercet = true;
-
+    
     if(!btnPresseted){
 
         if(PROG_FUNC == RFID_CANCEL){
@@ -287,8 +290,10 @@ void enableServerFoodMode(bool enable){
 
 void serve(){
     PROG_FUNC = SERVING_FOOD;
+    MsTimer2::stop();
     serveFood(FH_OPEN_TIME, FH_OPENING_SPEED, FH_CLOSING_SPEED);
     PROG_FUNC = READY_TO_SERVE;
+    MsTimer2::start();
     enableServerFoodMode(false);
 }
 

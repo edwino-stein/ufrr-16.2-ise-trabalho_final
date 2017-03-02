@@ -15,7 +15,7 @@
 
     #define RFID_REG_TIME 200
     #define RFID_COOLDOWN 1000
-    #define DEFAULT_SERVE_FOOD_TIME 10000
+    #define DEFAULT_SERVE_FOOD_TIME 2 * 60 * 60 * 1000
 
 
     //Serial commands
@@ -34,11 +34,11 @@
     //Food Hatch
     #define FH_SERVO 6
     #define FH_SWITCH 7
-    #define FH_OPEN_TIME 1000
+    #define FH_OPEN_TIME 500
     #define FH_OPENING_SPEED 1
     #define FH_CLOSING_SPEED 3
-    #define FOOD_HATCH_MIN_POS 10
-    #define FOOD_HATCH_MAX_POS 39
+    #define FOOD_HATCH_MIN_POS 11
+    #define FOOD_HATCH_MAX_POS 60
 
     //RFID Sensor
     #define RFID_SDA 10
