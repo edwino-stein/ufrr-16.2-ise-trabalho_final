@@ -1,4 +1,4 @@
-# Trabalho final de Sistemas Embarcados 2016.2
+﻿# Trabalho final de Sistemas Embarcados 2016.2
 
 - Componenetes:
     - Edwino Alberto Lopes Stein
@@ -28,3 +28,5 @@ Para o Arduino Uno, basta conectar um capacitor de **10µF** nos pinos GND (polo
 OBS.: É necessário ter instalado o PHP 5.5+.
 OBS.: A aplicação só foi testada no Ubuntu 16.04.
 OBS.: O usuário do servidor HTTP deve ter permissão de escrita no dispositivo serial.
+
+###### OBS.:As imagens dos componentes do relatório foram baseadas nas imagens disponíveis em [circuits.io](https://circuits.io/).
